@@ -7,9 +7,31 @@
     </head>
     <body>
         <h1>Rock, Paper, Scissors!</h1>
-        <div class="button">
-            <button onclick="playGame()">PLAY</button>
+        <div class="scoreboard">
+            <div class="scoreSide" id="player">
+                <p>YOU</p>
+                <p id="humanScore"></p>
+            </div>
+            <div class="scoreSide" id="computer">
+                <p>CPU</p>
+                <p id="computerScore"></p>
+            </div>
         </div>
+        <div class="announcement">
+            <p id="winnerDeclaration">Press any Button to Begin!</p>
+        </div>
+        <div class="buttons">
+            <button class="rock">
+                <img src="./images/rock.png">
+            </button>
+            <button class="paper">
+                <img src="./images/paper.png">
+            </button>
+            <button class="scissors">
+                <img src="./images/scissors.png">
+            </button>
+        </div>
+        
     </body>
     <script src="rock-paper-scissors.js"></script>
 </html>
