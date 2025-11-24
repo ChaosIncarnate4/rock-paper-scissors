@@ -1,6 +1,10 @@
 let humanScore = 0;
 let computerScore = 0;
 
+document.getElementById('humanScore').innerHTML = humanScore;
+document.getElementById('computerScore').innerHTML = computerScore;
+
+
 function getComputerChoice() {
     let attack = Math.floor(Math.random() * 3);
     
@@ -32,49 +36,70 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-        console.log("Tie!");
+        document.getElementById('winnerDeclaration').textContent = "Tie!";
     } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-        console.log("You've crushed the competition!")
+        document.getElementById('winnerDeclaration').textContent = "You've crushed the competition!";
+        document.getElementById('humanScore').innerHTML++;
         humanScore++;
     } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
-        console.log("Player pulverized!")
+        document.getElementById('winnerDeclaration').textContent = "Player pulverized!";
+        document.getElementById('computerScore').innerHTML++;
         computerScore++;
     } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-        console.log("You've ripped apart your rival!")
+        document.getElementById('winnerDeclaration').textContent = "You've ripped apart your rival!";
+        document.getElementById('humanScore').innerHTML++;
         humanScore++;
     } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
-        console.log("Your competitor's cut you up!")
+        document.getElementById('winnerDeclaration').textContent = "Your competitor's cut you up!";
+        document.getElementById('computerScore').innerHTML++;
         computerScore++;
     } else if (humanChoice === "Paper" && computerChoice === "Rock") {
-        console.log("You've engulfed your enemy!")
+        document.getElementById('winnerDeclaration').textContent = "You've engulfed your enemy!";
+        document.getElementById('humanScore').innerHTML++;
         humanScore++;
     } else if (humanChoice === "Rock" && computerChoice === "Paper") {
-        console.log("The adversary has asphyxiated you!")
+        document.getElementById('winnerDeclaration').textContent = "The adversary has asphyxiated you!";
+        document.getElementById('computerScore').innerHTML++;
         computerScore++;
     } else {
         console.log("Error");
     }
+
+    scoreCheck();
 }
 
 function scoreCheck() {
-    if (humanScore === computerScore) {
-        console.log("Draw!");
-    } else if (humanScore > computerScore) {
-        console.log("Victory!")
-    } else {
-        console.log("Defeat!");
+    if (humanScore === 5) {
+        document.getElementById('winnerDeclaration').textContent = "You've won!";
+    } else if (computerScore === 5) {
+        document.getElementById('winnerDeclaration').textContent = "Oof, better luck next time.";
     }
 }
 
 function playGame() {
-    for (let i = 0; i < 5; i++) {
-        let cpu = getComputerChoice();
-        let hum = getHumanChoice();
-        playRound(hum, cpu);
-    }
+    // for (let i = 0; i < 5; i++) {
+    //     let cpu = getComputerChoice();
+    //     let hum = getHumanChoice();
+    //     playRound(hum, cpu);
+    // }
 
-    scoreCheck();
+    // scoreCheck();
 }
+
+const rock = document.querySelector(".rock");
+rock.addEventListener("click", () => {
+  playRound("Rock", getComputerChoice());
+});
+
+const paper = document.querySelector(".paper");
+paper.addEventListener("click", () => {
+  playRound("Paper", getComputerChoice());
+});
+
+const scissors = document.querySelector(".scissors");
+scissors.addEventListener("click", () => {
+  playRound("Scissors", getComputerChoice());
+});
 
 
 
